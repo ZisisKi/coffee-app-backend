@@ -5,13 +5,13 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "orders") // Το όνομα του πίνακα στη MySQL
-@Data // Το Lombok φτιάχνει αυτόματα Getters/Setters!
+@Table(name = "orders")
+@Data
 public class CoffeeOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Το μοναδικό ID της παραγγελίας που αυξάνεται αυτόματα
+    private Long id;
 
     private String name;
     private String address;
@@ -22,9 +22,7 @@ public class CoffeeOrder {
     private boolean isDoubleShot;
     private double sweetnessLevel;
 
-    private LocalDateTime createdAt; // Ημερομηνία και ώρα παραγγελίας
-
-    // Αυτό τρέχει αυτόματα μόλις πάει να σωθεί η εγγραφή στη βάση
+    private LocalDateTime createdAt;
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();

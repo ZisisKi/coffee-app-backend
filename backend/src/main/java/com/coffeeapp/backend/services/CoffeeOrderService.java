@@ -14,8 +14,6 @@ import java.util.Optional;
 public class CoffeeOrderService {
 
     private final CoffeeOrderRepository repository;
-
-    // 1. ΔΗΜΙΟΥΡΓΙΑ (Αυτό που είχαμε ήδη)
     public CoffeeOrder createOrder(CoffeeOrderDTO dto) {
         CoffeeOrder order = new CoffeeOrder();
         order.setName(dto.getName());
@@ -29,17 +27,17 @@ public class CoffeeOrderService {
         return repository.save(order);
     }
 
-    // 2. ΑΝΑΖΗΤΗΣΗ ΟΛΩΝ
+
     public List<CoffeeOrder> getAllOrders() {
         return repository.findAll();
     }
 
-    // 3. ΑΝΑΖΗΤΗΣΗ ΒΑΣΕΙ ID (π.χ. φέρε μου την παραγγελία #5)
+
     public Optional<CoffeeOrder> getOrderById(Long id) {
         return repository.findById(id);
     }
 
-    // 4. ΔΙΑΓΡΑΦΗ ΒΑΣΕΙ ID
+
     public void deleteOrder(Long id) {
         repository.deleteById(id);
     }
